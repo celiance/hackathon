@@ -34,11 +34,45 @@ function login($username, $password){
 	}
 }
 
-function get_user_by_id($user_id){
+//Registrieren Funktion
+function register($username, $email, $password){
 	$db = get_db_connection();
-	$sql = "SELECT * FROM user WHERE id=$user_id;";
+	$sql = "INSERT INTO user (username, email, password) VALUES (?, ?, ?);";
+	$stmt = $db->prepare($sql);
+	return $stmt->execute(array($username, $email, $password));
 }
 
+// Überprüfung, ob die E-Mail-Adresse in der Tabelle users vorhanden ist.
+function email_check($email){
+	$db = get_db_connection(); // DB-Verbindung herstellen (s. login())
+	$sql = "SELECT * FROM user where email = '$email';";
+	$result = $db->query($sql);
+	if($result->rowCount() > 0){
+		return true;
+	};
+	return false;
+}
+
+function get_user_by_id($id){
+	$db = get_db_connection();
+	$sql = "SELECT * FROM user WHERE id = $id;";
+	$result = $db->query($sql);
+	return $result->fetch();
+}
+
+function request_input($title, $description, $user){
+	$db = get_db_connection();
+	$sql = "INSERT INTO request (title, description, autor ) VALUES (?, ?, ?);";
+	$stmt = $db->prepare($sql);
+	return $stmt->execute(array($title, $description, $user));
+}
+
+function get_request(){
+	$db = get_db_connection();
+	$sql = "SELECT * FROM request;";
+	$result = $db->query($sql);
+	return $result->fetchAll();
+}
 
 
 ?>

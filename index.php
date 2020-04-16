@@ -17,6 +17,8 @@
     $log_in_out_text = "Anmelden";
   }
 
+  $all_requests = get_request();
+
 
 ?>
 
@@ -24,14 +26,15 @@
           <!-- CONTENT -->
           <main>
             <div class="allrequests">
+              <?php foreach ($all_requests as $request) { ?>
               <div class="request">
-                  <h5>Celia Rogg</h5>
-                <h3>Lorem ipsum dolor sit</h3>
+                  <h5><?php echo $autor['username']; ?></h5>
+                <h3><?php echo $request['title']; ?></h3>
                 <p>
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                  <?php echo $request['description']; ?>
                 </p>
-
               </div>
+            <?php }?>
               <div class="request">
                 <h5>Celia Rogg</h5>
                 <h3>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam</h3>

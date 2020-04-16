@@ -125,6 +125,19 @@ li.navipunkt{
   text-align: center;
 }
 
+.login{
+  display: inline-block;
+  border-radius: 80px;
+  padding: 10px 25px 10px 25px;
+  color: #fff;
+  margin-left: 15px;
+  margin-top: 0px;
+  font-size: 0.8rem;
+  overflow: hidden;
+  width: 120px;
+  text-align: center;
+}
+
 li.register{
   border: 1px solid #20d19c;
   background-color: #1a1919;
@@ -145,8 +158,10 @@ a:hover{
   color: #20d19c;
 }
 
+
 .login a{
   color: #fff;
+  font-size: 0.8rem;
 }
 
 .register a{

@@ -47,7 +47,7 @@
 
 
       }else{
-        $msg = "Überprüfe deine Angaben.";
+        $msg = "Die Benutzerdaten sind nicht in unserer Datenbank vorhanden.";
       }
     }
   }

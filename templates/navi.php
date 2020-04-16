@@ -1,4 +1,6 @@
 <?php
+  require_once('js/mouse-cursor-gradient.js');
+
 
   if(isset($_SESSION['userid'])){
     $user = get_user_by_id($_SESSION['userid']);
@@ -21,9 +23,15 @@
         <li class="navipunkt"><a href="index.php">Alle Einträge</a></li>
         <!--<li class="navipunkt"><a href="#">Meine Ideen</a></li>-->
 
-          <li class="register"><a href="register.php">Registrieren</a></li>
+          <li class="register">
+            <?php if(!isset($user_id)){?>
+              <a href="register.php">Registrieren</a>
+            <?php }else{?>
+              <a href="#"><?php echo $user['username']; ?></a>
+            <?php } ?>
+          </li>
 
-        <li class="login mouse-cursor-gradient-tracking"><span><a href="login.php">Login</a></span></li>
+        <li class="login mouse-cursor-gradient-tracking"><span><a href="login.php"><?php echo $log_in_out_text; ?></a></span></li>
 
       </ul>
     </nav>
