@@ -36,9 +36,9 @@
     // Category Check
 
     if(isset($_POST['category1'])){
-      $category_id = 'Marketing';
+      $category_id = 'marketing';
     }elseif(isset($_POST['category2'])){
-      $category_id = 'Technologien';
+      $category_id = 'technologien';
     }elseif(isset($_POST['category3'])){
       $category_id ='andere';
     }else{

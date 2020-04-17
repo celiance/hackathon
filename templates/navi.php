@@ -20,8 +20,8 @@
   <header>
     <nav class="untermenu">
       <ul>
-        <li class="navipunkt"><a href="index.php">Alle Einträge</a></li>
-        <!--<li class="navipunkt"><a href="#">Meine Ideen</a></li>-->
+        <!--<li class="navipunkt"><a href="index.php">Alle Einträge</a></li>
+        <li class="navipunkt"><a href="#">Meine Ideen</a></li>-->
 
           <li class="register">
             <?php if(!isset($user_id)){?>

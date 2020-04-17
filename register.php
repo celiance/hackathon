@@ -48,8 +48,8 @@
         if($result){
           unset($_POST);
           $msg = "Du hast dich erfolgreich registriert.</br>";
-          header('Location: http://166363-13.web1.fh-htwchur.ch/');
-    
+          header('Location: http://166363-13.web1.fh-htwchur.ch/login.php');
+
 
         }else{
           $msg .= "Etwas hat nicht geklappt. Versuche es nochmal.</br>";

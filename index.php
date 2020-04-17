@@ -27,17 +27,20 @@
           <!-- CONTENT -->
           <main>
             <div class="category_buttons">
-              <button class="category_btn" data-category="1">Marketing</button>
-              <button class="category_btn" data-category="2">Technologie</button>
-              <button class="category_btn" data-category="3">andere</button>
+              <button class="category_btn active" data-category="1" onclick="filterSelection('all')">Alle</button>
+              <button class="category_btn" data-category="1" onclick="filterSelection('marketing')">Marketing</button>
+              <button class="category_btn" data-category="2" onclick="filterSelection('technologien')">Technologie</button>
+              <button class="category_btn" data-category="3" onclick="filterSelection('andere')">andere</button>
             </div>
             <div class="allrequests" id="allrequests">
               <?php foreach ($all_requests as $request) { ?>
-                <div class="request" id="request">
+                <div class="request <?php echo $request['category_id']; ?>">
                   <h5>
                       <?php echo $request['category_id']; ?>
                   </h5>
-                  <h3><?php echo $request['title']; ?></h3>
+                  <h3 id="test-titel">
+                    <?php echo $request['title']; ?>
+                  </h3>
                   <p>
                     <?php echo $request['description']; ?>
                   </p>
@@ -53,59 +56,54 @@
 
 <script type="text/javascript">
 
-  document.addEventListener("DOMContentLoaded", function(event) {
-      let show_request = document.querySelector('#request');
-      var category_buttons = document.getElementsByClassName('category_btn');
-      const category = document.querySelector('#category');
 
-      for(let i = 0; i < category_buttons.length; i++){
-        category_buttons[i].addEventListener("click", function(){
-          show_request(this.getAttribute("data-category"));
-        })
-      }
-      function show_request(category){
-        let url = category + ".json";
-        fetch(url)
-          .then((response) => {
-            return response.json();
-          })
-          .then((data) => {
-            mein_request = category_anzeige(data);
-            show_request.removeChild(show_request.firstChild);
-            show_request.appendChild(mein_request);
-          })
-          .catch(function(error) {
-            console.log('Error: ' + error.message);
-          });
-      }
-    });
+filterSelection("all")
+function filterSelection(c) {
+  var x, i;
+  x = document.getElementsByClassName("request");
+  if (c == "all") c = "";
+  // Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
+  for (i = 0; i < x.length; i++) {
+    RemoveClass(x[i], "show");
+    if (x[i].className.indexOf(c) > -1) AddClass(x[i], "show");
+  }
+}
 
-      function category_anzeige(category) {
-        const track_eigenschaften = document.createElement('ul');
-        const track_titel = document.createElement('li');
-        track_eigenschaften.appendChild(track_titel);
-        const track_artist = document.createElement('li');
-        track_eigenschaften.appendChild(track_artist);
-        const track_dauer = document.createElement('li');
-        track_eigenschaften.appendChild(track_dauer);
-        const track_label = document.createElement('li');
-        track_eigenschaften.appendChild(track_label);
+// gefilterte Elemnte
+function AddClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    if (arr1.indexOf(arr2[i]) == -1) {
+      element.className += " " + arr2[i];
+    }
+  }
+}
 
-        const label_liste = document.createElement('ul');
-        for(let i = 0; i < track.label.length; i++){
-          const label_listenpunkt = document.createElement('li');
-          label_listenpunkt.textContent = track.label[i];
-          label_liste.appendChild(label_listenpunkt);
-        }
+// Hide Elemente ohne Classennamen
+function RemoveClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    while (arr1.indexOf(arr2[i]) > -1) {
+      arr1.splice(arr1.indexOf(arr2[i]), 1);
+    }
+  }
+  element.className = arr1.join(" ");
+}
 
-        track_titel.innerHTML = "Titel: <strong>" + track.titel + "</strong>";
-        track_artist.textContent = "Künstler: " + track.artist;
-        track_dauer.textContent = "Dauer: " + track.dauer.single;
-        track_label.textContent = "Label: ";
-        track_label.appendChild(label_liste);
-
-        return track_eigenschaften;
-      }
+// Add active class to the current control button (highlight it)
+var btnContainer = document.getElementById("category_buttons");
+var btns = btnContainer.getElementsByClassName("category_btn");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function() {
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
 
 
 </script>

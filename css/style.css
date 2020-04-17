@@ -70,6 +70,10 @@ p, h5{
   color: #777;
 }
 
+h5{
+  text-transform: uppercase;
+}
+
 h3{
   color: #bbb;
 }
@@ -240,6 +244,11 @@ button{
 .request{
   border-bottom: 1px solid #222;
   padding: 15px 0px;
+  display: none;
+}
+
+.show {
+  display: block;
 }
 
 .category_btn{
@@ -257,7 +266,7 @@ button{
   border-color: #233e40;
 }
 
-.category_btn:active{
+.category_btn.active{
   background-color: #233e40;
   border-color: #233e40;
 }
