@@ -4,7 +4,7 @@ body{
   height: 100vh;
   margin: 0 0 0 0;
   padding: 0 0 0 0;
-  background-color: #1a1919;
+  background-color: #1b1a1a;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -92,6 +92,11 @@ li{
 img{
   float: left;
   margin-left: 10%;
+
+  animation-name: load-page;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  animation-delay: 0s;
 }
 
 /*.navipunkt{
@@ -193,6 +198,11 @@ a:hover{
   padding: 15px;
   border-radius: 10px;
   text-align: center;
+
+  animation-name: load-page;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  animation-delay: 0s;
 }
 
 label{
@@ -262,13 +272,13 @@ button{
 }
 
 .category_btn:hover{
-  background-color: #233e40;
-  border-color: #233e40;
+  background-color: #504a4d;
+  border-color: #504a4d;
 }
 
 .category_btn.active{
-  background-color: #233e40;
-  border-color: #233e40;
+  background-color: #504a4d;
+  border-color: #504a4d;
 }
 
 h3{
@@ -320,6 +330,11 @@ margin-top: 50px;
 .mouse-cursor-gradient-tracking:hover::before {
 --size: 200px;
 margin-top: 50px;
+}
+
+@keyframes load-page {
+  from {opacity: 0%;transform: translateY(-10px);}
+  to {opacity:  100%;transform: translateY(0px);}
 }
 
 @media (max-width:60em) {

@@ -24,6 +24,7 @@
 
 ?>
 
+        
           <!-- CONTENT -->
           <main>
             <div class="category_buttons">
