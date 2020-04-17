@@ -49,7 +49,7 @@
           unset($_POST);
           $msg = "Du hast dich erfolgreich registriert.</br>";
           header('Location: http://166363-13.web1.fh-htwchur.ch/');
-
+    
 
         }else{
           $msg .= "Etwas hat nicht geklappt. Versuche es nochmal.</br>";

@@ -62,17 +62,32 @@ function get_user_by_id($id){
 
 function request_input($title, $description, $user){
 	$db = get_db_connection();
-	$sql = "INSERT INTO request (title, description, autor ) VALUES (?, ?, ?);";
+	$sql = "INSERT INTO request (title, description, autor) VALUES (?, ?, ?);";
 	$stmt = $db->prepare($sql);
 	return $stmt->execute(array($title, $description, $user));
 }
 
+
 function get_request(){
 	$db = get_db_connection();
-	$sql = "SELECT * FROM request;";
+	$sql = "SELECT * FROM request ORDER BY id DESC;";
 	$result = $db->query($sql);
 	return $result->fetchAll();
 }
 
+function get_category(){
+	$db = get_db_connection();
+	$sql = "SELECT * FROM categories;";
+	$result = $db->query($sql);
+	return $result->fetchAll();
+}
+
+function get_category_by_id($id){
+	$db = get_db_connection();
+	$sql = "SELECT * FROM categories WHERE id=$id;";
+	$result = $db->query($sql);
+	$row = $result->fetch();
+	return $row;
+}
 
 ?>

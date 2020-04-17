@@ -138,6 +138,7 @@ li.navipunkt{
   text-align: center;
 }
 
+
 li.register{
   border: 1px solid #20d19c;
   background-color: #1a1919;
@@ -239,6 +240,13 @@ button{
 .request{
   border-bottom: 1px solid #222;
   padding: 15px 0px;
+}
+
+button #upvote{
+  border-radius: 150px;
+  padding: 80px;
+  background-color: #fefefe;
+  float: right;
 }
 
 h3{
