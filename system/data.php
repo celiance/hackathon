@@ -60,11 +60,11 @@ function get_user_by_id($id){
 	return $result->fetch();
 }
 
-function request_input($title, $description, $user){
+function request_input($title, $description, $user, $category_id){
 	$db = get_db_connection();
-	$sql = "INSERT INTO request (title, description, autor) VALUES (?, ?, ?);";
+	$sql = "INSERT INTO request (title, description, autor, category_id) VALUES (?, ?, ?, ?);";
 	$stmt = $db->prepare($sql);
-	return $stmt->execute(array($title, $description, $user));
+	return $stmt->execute(array($title, $description, $user, $category_id));
 }
 
 
@@ -85,6 +85,14 @@ function get_category(){
 function get_category_by_id($id){
 	$db = get_db_connection();
 	$sql = "SELECT * FROM categories WHERE id=$id;";
+	$result = $db->query($sql);
+	$row = $result->fetch();
+	return $row;
+}
+
+function get_request_by_category(){
+	$db = get_db_connection();
+	$sql = "SELECT * FROM request WHERE category_id = $category;";
 	$result = $db->query($sql);
 	$row = $result->fetch();
 	return $row;

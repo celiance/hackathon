@@ -21,6 +21,7 @@
   $all_requests = get_request();
 
 
+
 ?>
 
           <!-- CONTENT -->
@@ -32,17 +33,16 @@
             </div>
             <div class="allrequests" id="allrequests">
               <?php foreach ($all_requests as $request) { ?>
-              <div class="request" id="request">
-                <h5>
-                    <?php echo $request['category_id']; ?>
-                </h5>
-                <h3><?php echo $request['title']; ?></h3>
-                <p>
-                  <?php echo $request['description']; ?>
-                </p>
-
-              </div>
-            <?php }?>
+                <div class="request" id="request">
+                  <h5>
+                      <?php echo $request['category_id']; ?>
+                  </h5>
+                  <h3><?php echo $request['title']; ?></h3>
+                  <p>
+                    <?php echo $request['description']; ?>
+                  </p>
+                </div>
+              <?php }?>
             </div>
           </main>
         </div>
@@ -55,9 +55,9 @@
 
   document.addEventListener("DOMContentLoaded", function(event) {
       let show_request = document.querySelector('#request');
-
       var category_buttons = document.getElementsByClassName('category_btn');
       const category = document.querySelector('#category');
+
       for(let i = 0; i < category_buttons.length; i++){
         category_buttons[i].addEventListener("click", function(){
           show_request(this.getAttribute("data-category"));

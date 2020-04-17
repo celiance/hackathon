@@ -23,14 +23,17 @@ body{
 }
 
 .left{
-  width: 26%;
+  width: 29%;
   height: 100vh;
   margin: 0 0;
-  border-right: 1px solid #767676;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-    padding: 0 20px;
+    padding: 0 5px;
+}
+
+.request{
+    border-top: 1px solid #454545;
 }
 
 
@@ -41,7 +44,7 @@ body{
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      padding: 0 40px;
+      padding: 0 10px;
     }
 
 main{
@@ -178,11 +181,8 @@ a:hover{
 }
 
 
-
-
-
 .formular{
-  margin-top: 80px;
+  margin-top: 40px;
   position: relative;
   background-color: #0f0e0e;
   width: 80%;
@@ -242,11 +242,24 @@ button{
   padding: 15px 0px;
 }
 
-button #upvote{
+.category_btn{
   border-radius: 150px;
-  padding: 80px;
-  background-color: #fefefe;
-  float: right;
+  padding: 5px 15px;
+  background-color: #433e40;
+  border-color: #433e40;
+  margin-bottom:40px;
+  font-size: .6rem;
+  margin-right: 10px;
+}
+
+.category_btn:hover{
+  background-color: #233e40;
+  border-color: #233e40;
+}
+
+.category_btn:active{
+  background-color: #233e40;
+  border-color: #233e40;
 }
 
 h3{

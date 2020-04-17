@@ -33,11 +33,26 @@
       $reguest_valid = false;
     }
 
+    // Category Check
 
-    // Daten in die Datenbank schreiben ********
+    if(isset($_POST['category1'])){
+      $category_id = 'Marketing';
+    }elseif(isset($_POST['category2'])){
+      $category_id = 'Technologien';
+    }elseif(isset($_POST['category3'])){
+      $category_id ='andere';
+    }else{
+      $msg .= "Bitte gib eine Kategorie ein.<br>";
+      $reguest_valid = false;
+    }
+
+
+
+
+    // Daten in die Datenbank
 
    if($reguest_valid){
-        $result = request_input($title, $description, $user);
+        $result = request_input($title, $description, $user_id, $category_id);
 
 
         if($result){
@@ -84,10 +99,14 @@
                 <input type="text" name="title" id="title" value="" class="ideeInput"></br>
                 <label for="description">Beschreibung</label></br>
                 <textarea class="beschreibungInput" id="description" name="description" cols="35" rows="4"></textarea></br>
-                <?php foreach ($all_categories as $category) { ?>
-                    <label for="titel"><?php echo $category['category']; ?></label>
-                    <input type="radio" name="category<?php echo $category['id']; ?>" id="category<?php echo $category['id']; ?>" value="">
-                  <?php }?>
+
+                    <label for="titel">Marketing</label>
+                    <input type="radio" name="category1" id="category" value="">
+                    <label for="titel">Technologie</label>
+                    <input type="radio" name="category2" id="category" value="">
+                    <label for="titel">andere</label>
+                    <input type="radio" name="category3" id="category" value="">
+
 
 
                 <button type="submit" name="request_submit" id="request_submit">Senden</button>
@@ -105,17 +124,5 @@
       </div>
 
       <script>
-        $(document).ready(function() {
-          $('#request_submit').click(function(){
-            var title_txt = $('#title').val();
-            if($.trim(title_txt) != ''){
-              alert (title_txt);
-            }
-        });
-        var description_txt = $('#description').val();
-        if($.trim(description_txt) != ''){
-          alert (description_txt);
-        }
-      });
-        });
+
       </script>
